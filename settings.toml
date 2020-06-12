@@ -1,0 +1,26 @@
+[default]
+DEBUG = false
+DB_NAME = "development.db"
+SQLALCHEMY_DATABASE_URI="@jinja sqlite:///{{ this.DB_NAME | abspath }}"
+TITLE = "Flask Vue"
+SECRET_KEY = "jadkfbsdkjbfbh"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+EXTENSIONS = [
+    "app.ext.database:init_app",
+    "app.ext.commands:init_app",
+    "app.api:init_app",
+]
+
+
+[development]
+TEMPLATES_AUTO_RELOAD = true
+DEBUG = true
+
+[testing]
+DB_NAME = "testing.db"
+SQLALCHEMY_DATABASE_URI="@jinja sqlite:///{{ this.DB_NAME | abspath }}"
+
+
+[production] 
+DB_NAME = "production.db"
+SQLALCHEMY_DATABASE_URI="@jinja sqlite:///{{ this.DB_NAME | abspath }}"
