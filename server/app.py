@@ -1,10 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 
 from app.ext import configuration
 
 
 def minimal_app(**config):
     app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
+
     configuration.init_app(app, **config)
     return app
 
