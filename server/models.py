@@ -1,4 +1,4 @@
-from app.ext.database import db
+from server.ext.database import db
 from sqlalchemy_serializer import SerializerMixin
 
 

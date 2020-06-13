@@ -6,9 +6,9 @@ TITLE = "Flask Vue"
 SECRET_KEY = "jadkfbsdkjbfbh"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
-    "app.ext.database:init_app",
-    "app.ext.commands:init_app",
-    "app.api:init_app",
+    "server.ext.database:init_app",
+    "server.ext.commands:init_app",
+    "server.api:init_app",
 ]
 
 

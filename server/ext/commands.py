@@ -1,5 +1,5 @@
-from app.ext.database import db
-from app.models import Product
+from server.ext.database import db
+from server.models import Product
 
 
 def create_db():
