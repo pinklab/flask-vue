@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <p>{{ msg }}</p>
+  <div id="app">
+    <v-btn>
+      {{ msg }}
+    </v-btn>
   </div>
 </template>
 

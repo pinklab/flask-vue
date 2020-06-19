@@ -1,15 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+// import Home from '../views/Home.vue';
 import Ping from '../components/Ping.vue';
+import Tasks from '../components/Tasks.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Tasks',
+    component: Tasks,
   },
   {
     path: '/about',
