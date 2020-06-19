@@ -1,5 +1,5 @@
 from server.ext.database import db
-from server.models import Product
+from server.models import Task
 
 
 def create_db():
@@ -15,13 +15,13 @@ def drop_db():
 def populate_db():
     """Populate db with sample data"""
     data = [
-        Product(id=1, name="Ciabatta", price="10", description="Italian Bread"),
-        Product(id=2, name="Baguete", price="15", description="French Bread"),
-        Product(id=3, name="Pretzel", price="20", description="German Bread"),
+        Task(id=1, name="Study", description="python and flask"),
+        Task(id=2, name="Work", description="add feature"),
+        Task(id=3, name="Buy food", description="pizza"),
     ]
     db.session.bulk_save_objects(data)
     db.session.commit()
-    return Product.query.all()
+    return Task.query.all()
 
 
 def init_app(app):

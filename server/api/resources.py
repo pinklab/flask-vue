@@ -1,19 +1,20 @@
 from flask import abort, jsonify
 from flask_restful import Resource
 
-from server.models import Product
+from server.models import Task
 
 
-class ProductResource(Resource):
+class TasksResource(Resource):
     def get(self):
-        products = Product.query.all() or abort(204)
-        return jsonify({"products": [product.to_dict() for product in products]})
+        tasks = Task.query.all() or abort(204)
+        return jsonify({"tasks": [task.to_dict() for task in tasks]})
 
 
-class ProductItemResource(Resource):
-    def get(self, product_id):
-        product = Product.query.filter_by(id=product_id).first() or abort(404)
-        return jsonify(product.to_dict())
+class TaskItemResource(Resource):
+    def get(self, task_id):
+        task = Task.query.filter_by(id=task_id).first() or abort(404)
+        return jsonify(task.to_dict())
+
 
 class PongItemResource(Resource):
     def get(self):
