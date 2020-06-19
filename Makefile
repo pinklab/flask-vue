@@ -4,13 +4,22 @@ SHELL := /bin/bash
 help:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 
-all: clean install test 
+all: clean install.python test 
 
-install:
+install.python: clean
 	pip install --upgrade pip
 	pip install -r server/requirements.txt
 	pip install -r server/requirements-dev.txt
 	pip install -r server/requirements-test.txt
+
+install.vue:
+	@cd frontend/ && yarn install
+
+run.python:
+	@cd server/ && flask run
+
+run.vue:
+	@cd frontend/ && yarn serve
 
 test-server:
 	pytest server/tests
