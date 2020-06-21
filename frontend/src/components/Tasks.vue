@@ -3,7 +3,7 @@
       <v-col sm="10">
         <h1>Task</h1>
         <hr><br><br>
-        <v-btn>
+        <v-btn color="primary">
           Add Task
         </v-btn>
         <br><br>
@@ -16,9 +16,14 @@
           class="elevation-1"
         >
           <template v-slot:item.oid="props">
-            <v-btn>
-              {{ props.item.oid }}
-            </v-btn>
+            <v-container fluid :id="props">
+              <v-btn>
+                <v-icon>{{ icons.mdiPencil }}</v-icon>
+              </v-btn>
+              <v-btn color="error">
+                <v-icon>{{ icons.mdiDelete }}</v-icon>
+              </v-btn>
+            </v-container>
           </template>
         </v-data-table>
       </v-col>
@@ -26,9 +31,18 @@
 </template>
 
 <script>
+import {
+  mdiPencil,
+  mdiDelete,
+} from '@mdi/js';
+
 export default {
   name: 'Tasks',
   data: () => ({
+    icons: {
+      mdiDelete,
+      mdiPencil,
+    },
     headers: [
       { text: 'Owner', value: 'username' },
       { text: 'Category', value: 'category' },
